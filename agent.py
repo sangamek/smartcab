@@ -70,7 +70,7 @@ class LearningAgent(Agent):
         # Calculate the maximum Q-value of all actions for a given state
         # preset an initialization value that should be replaced by a more valid Q value in the loop.
         #sang
-        maxQ = -500.0
+        maxQ = -1000.0
         for action in self.Q[state]:
             if maxQ < self.Q[state][action]:
                 maxQ = self.Q[state][action]
@@ -84,10 +84,15 @@ class LearningAgent(Agent):
         # If it is not, create a new dictionary for that state
         #   Then, for each action available, set the initial Q-value to 0.0
         #sang
-        if self.learning:
-            self.Q[state] = self.Q.get(state, {None:0.0, 'forward':0.0, 'left':0.0, 'right':0.0})
+        #if self.learning:
+        #    self.Q[state] = self.Q.get(state, {None:0.0, 'forward':0.0, 'left':0.0, 'right':0.0})
         
+        #return
+        if self.learning:
+            if state not in self.Q:
+                self.Q[state] = {None:0.0, 'forward':0.0, 'left': 0.0, 'right':0.0}
         return
+    
     
     
     def choose_action(self, state):
