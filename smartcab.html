@@ -19375,24 +19375,24 @@ Point to note:- Wait till no oncoming traffic is in the way.If the waypoint is l
 <br>
 There are cases where policy is different from what would be considered a optimal policy.<br>
 <br>
-Example: 
-<br>
-('right', 'red', 'forward', None)<br>
--- forward : -0.41<br>
--- None : 0.31<br>
--- right : -1.37<br>
--- left : -1.18<br>
-When there is no oncoming traffic the optimal policy should have rewarded the right turn the most, but here I see staying put and going left has better rewards.<br><br></p>
+Example: <br>
+('forward', 'green', 'right', 'forward')<br>
+-- forward : 0.36<br>
+-- None : 0.00<br>
+-- right : 0.02<br>
+-- left : 0.00<br></p>
 </li>
-<li><p>Some examples:<br>
+</ol>
+<p>Going forward should have been rewarded more than left or staying put. As going forward has the right of way, this is a suboptimal policy.<br><br></p>
+<ol>
+<li>Some examples:<br>
 <br>
 ('left', 'green', 'left', 'left')<br>
 -- forward : 0.02<br>
 -- None : -0.11<br>
 -- right : 0.03<br>
 -- left : 0.62<br>
-It looks like the oncoming traffic is turning left, so in this case, the agent should have turned left instead of right as correctly identified by the reward.<br><br></p>
-</li>
+It looks like the oncoming traffic is turning left, so in this case, the agent should have turned left instead of right as correctly identified by the reward.<br><br></li>
 </ol>
 <p>('forward', 'green', 'right', 'forward')<br>
  -- forward : 0.36<br>
@@ -19431,7 +19431,8 @@ When the light is red, there should never be a case where a left turn could give
  -- right : 0.01<br>
  -- left : 0.15<br>
  When the light is green, going forward would have been the optimal choice- given that is the waypoint. But left is getting rewarded more, that will delay and cause a lower reliability of the smartcab. <br><br></p>
-<p>This suggestes that Q-learning agent can get better and more efficient and this may be the reason why the agent has a A rating on reliability instead of A+.</p>
+<p>The a sub-optimal policy for the agent is caused as it hasn't had the chance to learn the rewards yet. Hence  more training trials would help the agent to encounter these states a bit more.</p>
+<p>This also suggestes that Q-learning agent can get better and more efficient and this may be the reason why the agent has a A rating on reliability instead of A+.</p>
 
 </div>
 </div>
